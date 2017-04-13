@@ -10,5 +10,18 @@ import com.taotao.common.pojo.TaotaoResult;
  */
 public interface ItemParamService {
 
+    /**
+     * 根据分类id获取规格参数
+     * @param cid
+     * @return
+     */
     TaotaoResult getItemParamByCid(Long cid);
+
+    /**
+     * 插入规格参数
+     * @param cid
+     * @param paramData
+     * @return
+     */
+    TaotaoResult insertItemParam(Long cid, String paramData);
 }

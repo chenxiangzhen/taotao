@@ -8,6 +8,7 @@ import com.taotao.service.ItemParamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -32,6 +33,17 @@ public class ItemParamServiceImpl implements ItemParamService {
             TbItemParam itemParam = list.get(0);
             return TaotaoResult.ok(itemParam);
         }
+        return TaotaoResult.ok();
+    }
+
+    @Override
+    public TaotaoResult insertItemParam(Long cid, String paramData) {
+        TbItemParam itemParam = new TbItemParam();
+        itemParam.setItemCatId(cid);
+        itemParam.setParamData(paramData);
+        itemParam.setCreated(new Date());
+        itemParam.setUpdated(new Date());
+        tbItemParamMapper.insert(itemParam);
         return TaotaoResult.ok();
     }
 }
