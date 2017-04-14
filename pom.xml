@@ -15,6 +15,7 @@
         <module>taotao-mapper</module>
         <module>taotao-service</module>
         <module>taotao-web</module>
+        <module>taotao-rest</module>
     </modules>
 
 
