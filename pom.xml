@@ -16,6 +16,7 @@
         <module>taotao-service</module>
         <module>taotao-web</module>
         <module>taotao-rest</module>
+        <module>taotao-portal</module>
     </modules>
 
 
