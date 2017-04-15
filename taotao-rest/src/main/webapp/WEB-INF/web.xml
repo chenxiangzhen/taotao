@@ -52,7 +52,7 @@
     <servlet-mapping>
         <servlet-name>taotao-rest</servlet-name>
         <!-- 这样配置导致静态资源也会被拦截，解决需要在spingmvc.xml配置资源映射resource标签 -->
-        <url-pattern>/</url-pattern>
+        <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
     
 </web-app>
