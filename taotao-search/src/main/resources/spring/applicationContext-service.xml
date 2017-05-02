@@ -9,7 +9,7 @@
     http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
     <!-- 包扫描器，扫描带@Service注解的类 -->
-    <context:component-scan base-package="com.taotao.search.service"></context:component-scan>
+    <context:component-scan base-package="com.taotao.search.service, com.taotao.search.dao"></context:component-scan>
 
     <!--单机版solr客户端-->
     <bean id="httpSolrServer" class="org.apache.solr.client.solrj.impl.HttpSolrServer">
