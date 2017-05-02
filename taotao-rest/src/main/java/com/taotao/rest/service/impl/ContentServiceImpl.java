@@ -1,5 +1,6 @@
 package com.taotao.rest.service.impl;
 
+import com.taotao.common.pojo.TaotaoResult;
 import com.taotao.common.utils.JsonUtils;
 import com.taotao.mapper.TbContentMapper;
 import com.taotao.pojo.TbContent;
@@ -62,5 +63,11 @@ public class ContentServiceImpl implements ContentService {
         }
 
         return list;
+    }
+
+    @Override
+    public TaotaoResult syncContent(Long cid) {
+        jedisClient.hdel(REDIS_CONTENT_KEY, cid + "");
+        return TaotaoResult.ok();
     }
 }
