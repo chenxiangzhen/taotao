@@ -1,6 +1,6 @@
 package com.taotao.sso.component.impl;
 
-import com.taotao.rest.component.JedisClient;
+import com.taotao.sso.component.JedisClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import redis.clients.jedis.JedisCluster;
 
