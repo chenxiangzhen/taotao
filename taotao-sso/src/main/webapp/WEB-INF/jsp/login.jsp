@@ -79,7 +79,7 @@
 					if (data.status == 200) {
 						alert("登录成功！");
 						if (redirectUrl == "") {
-							location.href = "http://www.taotao.com";
+							location.href = "http://localhost:8091";
 						} else {
 							location.href = redirectUrl;
 						}
