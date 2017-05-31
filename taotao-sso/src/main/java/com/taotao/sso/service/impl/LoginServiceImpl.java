@@ -8,6 +8,7 @@ import com.taotao.pojo.TbUser;
 import com.taotao.pojo.TbUserExample;
 import com.taotao.sso.component.JedisClient;
 import com.taotao.sso.service.LoginService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -66,5 +67,21 @@ public class LoginServiceImpl implements LoginService {
         // 写Cookie
         CookieUtils.setCookie(request, response, "TT_TOKEN", token);
         return TaotaoResult.ok(token);
+    }
+
+    @Override
+    public TaotaoResult getUserByToken(String token) {
+
+        // 根据token获取用户信息
+        String json = jedisClient.get(REDIS_SESSION_KEY + ":" + token);
+        // 判断是否查询到结果
+        if (StringUtils.isBlank(json)) {
+            return TaotaoResult.build(400, "用户session已经过期");
+        }
+        // 查到了，把json转换成java对象
+        TbUser user = JsonUtils.jsonToPojo(json, TbUser.class);
+        // 更新session的过期时间
+        jedisClient.expire(REDIS_SESSION_KEY + ":" + token, SESSION_EXPIRE);
+        return TaotaoResult.ok(user);
     }
 }
