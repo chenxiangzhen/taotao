@@ -37,4 +37,11 @@ public class CartController {
         model.addAttribute("cartList", list);
         return "cart";
     }
+
+    @RequestMapping("/cart/update/num/{itemId}/{num}")
+    public TaotaoResult updateCartItemNum(@PathVariable Long itemId, @PathVariable Integer num,
+                                          HttpServletRequest request, HttpServletResponse response) {
+        TaotaoResult result = cartService.updateCartItem(itemId,num, request, response);
+        return result;
+    }
 }
