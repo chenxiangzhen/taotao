@@ -47,7 +47,7 @@ public class CartServiceImpl implements CartService {
             }
         }
         // 5、如果不存在，调用rest服务，根据商品id获得商品数据。
-        if (haveFlag) {
+        if (!haveFlag) {
             TbItem item = itemService.getItemById(itemId);
             // 转换成CartItem
             CartItem cartItem = new CartItem();
@@ -68,6 +68,12 @@ public class CartServiceImpl implements CartService {
         CookieUtils.setCookie(request, response, "TT_CART", JsonUtils.objectToJson(itemList), COOKIE_EXPIRE, true);
         // 8、返回TaotaoResult
         return TaotaoResult.ok();
+    }
+
+    @Override
+    public List<CartItem> getCartItems(HttpServletRequest request) {
+        List<CartItem> list = getCartItemList(request);
+        return list;
     }
 
     /**
