@@ -44,4 +44,10 @@ public class CartController {
         TaotaoResult result = cartService.updateCartItem(itemId,num, request, response);
         return result;
     }
+
+    @RequestMapping("/cart/delete/{itemId}")
+    public String deleteCartItem(@PathVariable Long itemId, HttpServletRequest request, HttpServletResponse response) {
+        TaotaoResult result = cartService.deleteCartItem(itemId, request, response);
+        return "redirect:/cart/cart.html";
+    }
 }
