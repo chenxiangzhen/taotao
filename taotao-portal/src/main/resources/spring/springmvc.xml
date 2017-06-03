@@ -20,10 +20,10 @@
     </bean>
 
     <!--配置拦截器-->
-    <!--<mvc:interceptors>-->
-        <!--<mvc:interceptor>-->
-            <!--<mvc:mapping path="/item/**"/>-->
-            <!--<bean class="com.taotao.portal.LoginInterceptor"></bean>-->
-        <!--</mvc:interceptor>-->
-    <!--</mvc:interceptors>-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/order/**"/>
+            <bean class="com.taotao.portal.LoginInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>
